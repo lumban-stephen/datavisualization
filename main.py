@@ -1,25 +1,54 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
-# Define player data as a dictionary with associated colors
 players = {
-    "player1": ([500, 400, 900, 600, 800, 700, 200, 550, 500, 620], 'r', 'g'),  # 'r' for red
-    "player2": ([500, 400, 900, 600, 800, 700, 200, 550, 500, 620], 'g', 'b'),  # 'g' for green
-    "player3": ([500, 400, 900, 600, 800, 700, 200, 550, 500, 620], 'b', 'c'),  # 'b' for blue
-    "player4": ([500, 400, 900, 600, 800, 700, 200, 550, 500, 620], 'c', 'm'),  # 'c' for cyan
-    "player5": ([500, 400, 900, 600, 800, 700, 200, 550, 500, 620], 'm', 'r')   # 'm' for magenta
+    "player1": {
+        "data": [10161, 13901, 10027, 12742, 8438, 7932, 12983, 9633, 8457, 11420],
+        "color": 'r',
+        "mColor": 'g',
+        "label": "Masayoshi"
+    },
+    "player2": {
+        "data": [6890, 9603, 9184, 10524, 11450, 9884, 9184, 11122, 8314, 11694],
+        "color": 'g',
+        "mColor": 'b',
+        "label": "1G"
+    },
+    "player3": {
+        "data": [11179, 10282, 13433, 8393, 11722, 10358, 10780, 9777, 17367, 8389],
+        "color": 'b',
+        "mColor": 'c',
+        "label": "s a z"
+    },
+    "player4": {
+        "data": [9335, 14565, 11474, 12951, 11413, 10686, 10907, 11895, 16127, 19558],
+        "color": 'c',
+        "mColor": 'm',
+        "label": "AlbertosS"
+    },
+    "player5": {
+        "data": [8983, 8527, 8473, 11746, 10049, 11808, 9310, 14229, 11194, 9904],
+        "color": 'm',
+        "mColor": 'r',
+        "label": "Paul"
+    }
 }
 
-username = input("Enter username: ")
+playerData = [player["data"] for player in players.values()]
+playerLabel = [player["label"] for player in players.values()]
+playerColors = [player["color"] for player in players.values()]
+markerColors = [player["mColor"] for player in players.values()]
 
-if username in players:
-    player_data, color, mColor = players[username]
+gameNumber = list(range(1, 11))
 
-    gameNumber = list(range(1, 11))
-    plt.plot(gameNumber, player_data, marker='D', linestyle='--', color=color, markerfacecolor=mColor)
-    plt.xlabel(f'Last 10 Games of {username}')
-    plt.ylabel(f"{username}'s Net worth In Game")
-    plt.title(f'{username} Performance Over 10 Games')
-    plt.show()
-else:
-    print(f"No data found for username: {username}")
+for data, color, mColor, label in zip(playerData, playerColors, markerColors, playerLabel):
+    plt.plot(gameNumber, data, marker='D', linestyle='--', color=color, markerfacecolor=mColor, label=label)
+
+
+
+plt.xlabel("Game Number")
+plt.ylabel("Net Worth in-game")
+plt.title("Net worth of Players over 10 Games")
+plt.legend()
+fig = plt.figure(1)
+fig.patch.set_facecolor("c")
+plt.show()
