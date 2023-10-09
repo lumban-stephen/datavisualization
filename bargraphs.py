@@ -48,7 +48,7 @@ playerMeans = [getMean(data) for data in playerData]
 # Creating the bar plot
 plt.bar(playerLabels, playerMeans, color=playerColors)
 
-plt.xlabel("Players")
+plt.xlabel("Mobile Legend Players")
 plt.ylabel("Net Worth in Gold")
 plt.title("ML Players' Average in 10 Games")
 plt.show()
