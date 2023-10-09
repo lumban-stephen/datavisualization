@@ -61,4 +61,6 @@ for i in range(len(playerData), len(axes)):
     fig.delaxes(axes[i])
 
 plt.tight_layout()
+fig = plt.figure(1)
+fig.patch.set_facecolor("c")
 plt.show()

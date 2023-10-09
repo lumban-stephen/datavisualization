@@ -51,4 +51,6 @@ plt.bar(playerLabels, playerMeans, color=playerColors)
 plt.xlabel("Mobile Legend Players")
 plt.ylabel("Net Worth in Gold")
 plt.title("ML Players' Average in 10 Games")
+
+fig.patch.set_facecolor("c")
 plt.show()
